@@ -7,7 +7,7 @@ Page({
   data: {
     name: "",
     wavepath:"",
-    record_state:"长按录音",
+    record_state:"长按开始录音",
   },
 
   input: function(e) {
@@ -139,7 +139,7 @@ Page({
     console.log('touchStart....')
     this.start();
     this.setData({
-      record_state:'录音中'
+      record_state:'录音中...（松开结束录音）'
     })
   }, 
 
@@ -148,7 +148,7 @@ Page({
     console.log('touchEnd....')
     this.stop()
     this.setData({
-      record_state: '长按录音'
+      record_state: '长按开始录音'
     })
   },  
 })
