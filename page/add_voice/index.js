@@ -23,9 +23,9 @@ Page({
       duration: 10000, //指定录音的时长，单位 ms
       sampleRate: 16000, //采样率
       numberOfChannels: 1, //录音通道数
-      encodeBitRate: 96000, //编码码率
+      encodeBitRate: 48000, //编码码率
       format: 'aac', //音频格式，有效值 aac/mp3
-      frameSize: 50, //指定帧大小，单位 KB
+      //frameSize: 50, //指定帧大小，单位 KB
     }
     //开始录音
     recorderManager.start(options);
