@@ -42,8 +42,8 @@ I will build and open our API (freeneb) for speaker recognition soon.
 
 1. **master** contains the source code published in WeChat.
 2. **dev** is developing branch.
-3. **v1** is the original source code for speaker identification.
-4. **v2** is the original source code for speaker verification.
+3. **v1** contains the original source code for speaker identification.
+4. **v2** contains the original source code for speaker verification.
 
 ## QR code
 
