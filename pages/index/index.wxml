@@ -1,0 +1,24 @@
+<view class="index">
+  <view class="head">
+    <view class="title">星 云 听</view>
+    <text>\n</text>
+    <view class="desc">
+      <text>一款听音识人的微信小程序</text>
+    </view>
+    <text>\n</text>
+    <view class="line"></view>
+  </view>
+  <view class="body">
+    <button class='btn' bindtap="numbers">
+      <image class='btnImg' src='../../images/number.png'></image>
+      <view>数字串文本</view>
+    </button>
+    <button class='btn' bindtap="shorttext">
+      <image class='btnImg' src='../../images/text.png'></image>
+      <view>短自由文本</view>
+    </button>
+    <text class="note">\n\n</text>
+    <text class="note">该小程序仅是用于测试说话人识别\n</text>
+    <text class="note">第三方识别结果与用时均为调用其公开接口所得</text>
+  </view>
+</view>

@@ -1,0 +1,48 @@
+<view class="index">
+  <view class="head">
+    <view class="title">短自由文本</view>
+    <view class="desc"></view>
+    <text>\n</text>
+    <view class="line"></view>
+  </view>
+  <view class="commet_Y" hidden='{{isRecording}}'>
+    <text>\n</text>
+    <view class='desc' hidden="{{isVerify}}">
+      <text>长按录音-注册声纹</text>
+    </view>
+    <view class='desc' hidden="{{!isVerify}}">
+      <text>长按录音-验证声纹</text>
+    </view>
+  </view>
+  <view class="commet_Y" hidden='{{!isRecording}}'>
+    <text>\n</text>
+    <view class='comment_Y'>
+      <text>{{text}}</text>
+    </view>
+  </view>
+  <view class="body">
+    <text>\n\n\n\n</text>
+    <view class="widgets" hidden="{{isVerify}}">
+      <image bindtouchstart="Enroll_RecordStart" bindtouchend="Enroll_RecordStop" class="record" src="{{recorder_img}}"></image>
+      <text>\n</text>
+      <text class="desc">还需 {{n}} 次</text>
+      <text>\n\n</text>
+    </view>
+    <view class="widgets" hidden="{{!isVerify}}">
+      <image bindtouchstart="Verify_RecordStart" bindtouchend="Verify_RecordStop" class="record" src="{{recorder_img}}"></image>
+      <text>\n</text>
+      <text class="desc">录音验证</text>
+      <text>\n\n</text>
+    </view>
+    <view class="N_record">
+      <view id="form" class="widgets__info" bindtap="reload">
+        <text class="widgets__info-name">重新注册声纹</text>
+        <image class="widgets__info-img" src="../../images/trash.png" background-size="cover" />
+      </view>
+    </view>
+    <modal hidden="{{hiddenmodal}}" title="识别结果" confirm-text="确定" cancel-text="取消" bindconfirm="confirmM" bindcancel="cancelM">
+      <text class="result">\nFreeNeb : {{cslt_result}}\n\n</text>
+      <text class='result'>SpeakIn : {{speakin_result}}\n\n</text>
+    </modal>
+  </view>
+</view>

@@ -1,0 +1,146 @@
+.record {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+
+.commet_N {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 35px;
+  color: black;
+}
+.commet_Y {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 45px;
+  color: black;
+}
+
+.result {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    color: #888;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.index {
+  background: "white";
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+  flex: 1;
+  min-height: 100%;
+  font-size: 16px;
+}
+
+.head {
+  padding: 35px;
+}
+
+.body {
+  padding-left: 15px;
+  padding-right: 15px;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 30px;
+  justify-content: center;
+  margin: 0 auto;
+  display: flex;
+}
+
+.desc {
+  margin-top: 15px;
+  color: #888;
+  font-size: 20px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.N_record {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: gainsboro;
+  overflow: hidden;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.Y_record {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(173, 225, 2546);
+  overflow: hidden;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.widgets__info {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  flex-direction: row;
+  color: black;
+}
+
+.widgets__info_show {
+  opacity: 0.4;
+}
+
+.widgets__info-name {
+  flex: 1;
+  font-size: 16px;
+}
+
+.widgets__info-img {
+  width: 40px;
+  height: 40px;
+}
+
+.widgets__list {
+  display: none;
+}
+
+.widgets__list_show {
+  display: block;
+}
+
+
+
+.widget {
+  position: relative;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.widget__arrow {
+  position: absolute;
+  top: 14px;
+  right: 22px;
+  width: 8px;
+  height: 16px;
+}
+
+.line {
+  background: #e0e3da;
+  width: 100%;
+  height: 5rpx;
+}

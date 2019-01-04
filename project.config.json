@@ -1,22 +1,19 @@
 {
-	"description": "项目配置文件",
+	"description": "项目配置文件。",
 	"packOptions": {
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.1",
+	"libVersion": "2.2.0",
 	"appid": "wx01ed9c0a840f28c2",
-	"projectname": "VPR-client",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
+	"projectname": "wx-client2",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
