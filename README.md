@@ -36,7 +36,14 @@ This repo contains the source code of WeChat client, which includes 3 pages:
 
 **The server source code is private.**
 
-I will build and open our API (freeneb) for speaker recognition soon. 
+I will build and open our API (freeneb) for speaker recognition soon.
+
+### Git Branch
+
+1. **master** contains the source code published in WeChat.
+2. **dev** is developing branch.
+3. **v1** is the original source code for speaker identification.
+4. **v2** is the original source code for speaker verification.
 
 ## QR code
 
