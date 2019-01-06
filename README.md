@@ -12,25 +12,25 @@
 
 ## Brief Introduction
 
-星云听 is a WeChat min-program for **speaker verification** based on 3 VPR models, including: [FreeNeb (fnvpr)](www.freeneb.com/
-), [SpeakIn](http://www.speakin.mobi/pages/index.html) and [Microsoft](https://azure.microsoft.com/en-us/services/cognitive-services/speaker-recognition/). And it provides two ways to enroll and verify speaker’s voice, including **numbers** and **short text**.
+星云听 is a WeChat min-program for **speaker verification** based on three VPR models, including: [FreeNeb](www.freeneb.com/
+), [SpeakIn](http://www.speakin.mobi/pages/index.html) and [Microsoft](https://azure.microsoft.com/en-us/services/cognitive-services/speaker-recognition/). Besides, it provides two content options, including **digital-strings** and **short-text**.
 
-*(PS：Microsoft speaker verification API is unstable so we didn't put it in current version）*
+Note: The Microsoft API is not stable so we didn't put it in the current version.
 
 ## Code Structure Overview
 
 This project consists of 2 parts: Client and Server.
 
-1. **Client**: provide a web interface to record speaker voice
-2. **Server**: provide speaker recognition service
+1. **Client**: provides a web interface to record speaker's voice
+2. **Server**: provides the speaker verification service
 
 ### 1. Client
 
-This repo contains the source code of WeChat client, which includes 3 pages:
+pages:
 
 1. index: index page of this app.
-2. numbers: page to enroll and verify speaker's voice by number.
-3. shorttext: page to enroll and verify speaker's voice by shorttext.
+2. numbers: page to enroll and verify speaker's voice by digital-strings
+3. shorttext: page to enroll and verify speaker's voice by short-text
 
 ### 2. Server
 
