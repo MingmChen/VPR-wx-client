@@ -2,7 +2,7 @@
 <br>
 
 <p align="center">
-<img src="https://github.com/zyzisyz/vpr-wx-client2.0/blob/master/images/cslt.jpg" alt="CSLT">
+<img src="https://github.com/zyzisyz/VPR-wx-client/blob/master/images/cslt.jpg" alt="CSLT">
 </p>
 <p align="center">
 <img src="https://img.shields.io/badge/powered%20by-CSLT-green.svg?style=flat-square">
