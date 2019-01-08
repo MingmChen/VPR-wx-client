@@ -50,7 +50,7 @@ I will build and open our API (freeneb) for speaker recognition soon.
 Scan this QR code in Wecaht to use this app.
 
 <p align="center">
-<img src="https://github.com/zyzisyz/vpr-wx-client2.0/blob/master/images/QR-code.jpg" alt="QR-code">
+<img src="https://github.com/zyzisyz/VPR-wx-client/blob/dev/images/QR-code.jpg" alt="QR-code">
 </p>
 
 ## Contact
