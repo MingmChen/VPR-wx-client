@@ -22,9 +22,7 @@ Page({
     isRecoding: false,
     wav_file_path: "",
     hiddenmodal: true,
-    speakin_result: "",
     cslt_result: "",
-    ms_result: "",
     recorder_img: '../../images/record.png',
     n: 3,
     text: "独上高楼，望尽天涯路",
@@ -59,147 +57,6 @@ Page({
     })
   },
 
-  stop_record_enroll() {
-    let that = this
-    var tmp_wav = ''
-    recorderManager.stop();
-    recorderManager.onStop((res) => {
-      that.setData({
-        wav_file_path: res.tempFilePath,
-        recorder_img: '../../images/record.png'
-      })
-      tmp_wav = res.tempFilePath;
-      const {
-        tempFilePath
-      } = res
-      console.log('停止录音', res.tempFilePath)
-      console.log('tmp_wav', tmp_wav)
-
-      var url = 'https://colphin.freeneb.com/shorttext_enroll'
-      console.log(this.tempFilePath)
-      console.log('停止录音', tmp_wav)
-
-      if (res.duration < 1000) {
-        wx.showToast({
-          title: "录音时间太短",
-          icon: "none",
-          duration: 1000
-        });
-      } else {
-
-        wx.uploadFile({
-          url: url,
-          filePath: tmp_wav,
-
-          name: 'file',
-          formData: {
-            name: this.data.name + '_' + this.data.count
-          },
-          success: function (res) {
-            console.log(res)
-            wx.showToast({
-              title: "上传成功...",
-              icon: "none",
-              duration: 500
-            });
-            if (that.data.count < 2) {
-              var temp = that.data.count + 1
-
-              that.setData({
-                count: temp,
-                n: 3 - temp
-              })
-            } else {
-              that.setData({
-                count: 0,
-                n: 3 - temp,
-                isVerify: true,
-              })
-              wx.setStorageSync('t_name', that.data.name)
-              wx.setStorageSync('t_isverify', that.data.isVerify)
-            }
-          },
-
-          fail: function (res) {
-            console.log(res);
-            wx.showToast({
-              title: "录音失败，请重试...",
-              icon: "none",
-              duration: 2000
-            });
-          }
-        });
-      }
-    })
-    this.updatetext()
-  },
-
-  stop_record_verify() {
-    let that = this
-    var tmp_wav = ''
-    recorderManager.stop();
-    recorderManager.onStop((res) => {
-      that.setData({
-        wav_file_path: res.tempFilePath,
-      })
-      tmp_wav = res.tempFilePath;
-      const {
-        tempFilePath
-      } = res
-      console.log('停止录音', res.tempFilePath)
-      console.log('tmp_wav', tmp_wav)
-
-      var url = 'https://colphin.freeneb.com/shorttext_verify'
-      console.log(this.tempFilePath)
-      console.log('停止录音', tmp_wav)
-      wx.showToast({
-        title: "处理中...",
-        icon: "loading",
-      });
-      if (res.duration < 1000) {
-        wx.showToast({
-          title: "录音时间太短",
-          icon: "none",
-          duration: 1000
-        });
-      } else {
-
-        wx.uploadFile({
-          url: url,
-          filePath: tmp_wav,
-
-          name: 'file',
-          formData: {
-            name: this.data.name
-          },
-          success: function (res) {
-            console.log(res)
-            var result = JSON.parse(res.data)
-            console.log("result", result)
-
-            that.setData({
-              hiddenmodal: false,
-              cslt_result: result.CSLT,
-              speakin_result: result.SpeakIN,
-              ms_result: result.MS,
-            });
-            wx.hideToast()
-          },
-
-          fail: function (res) {
-            console.log(res);
-            wx.showToast({
-              title: "录音失败，请重试...",
-              icon: "none",
-              duration: 2000
-            });
-          }
-        });
-      }
-    })
-    this.updatetext()
-  },
-
   updatetext() {
     var rand = Math.floor(Math.random() * 10)
     var temp = texts[rand]
@@ -209,7 +66,8 @@ Page({
   },
 
   //长按录音
-  Enroll_RecordStart: function () {
+  RecordStart: function () {
+    this.updatetext()
     if (this.data.count == 0) {
       var timestamp = Date.parse(new Date());
       timestamp = timestamp / 1000;
@@ -224,27 +82,90 @@ Page({
     this.start_record()
   },
 
-  Enroll_RecordStop: function () {
-    this.stop_record_enroll()
+  RecordStop: function () {
     this.setData({
       recorder_img: '../../images/record.png',
       isRecording: false,
+    })
+    let that = this
+    recorderManager.stop();
+
+    recorderManager.onStop((res) => {
+      that.setData({
+        wav_file_path: res.tempFilePath,
+      })
+      var tmp_wav = res.tempFilePath;
+      const {
+        tempFilePath
+      } = res
+      console.log('停止录音', res.tempFilePath)
+      console.log('tmp_wav', tmp_wav)
+      if (res.duration < 1000) {
+        wx.showToast({
+          title: "录音时间太短",
+          icon: "none",
+          duration: 1000
+        });
+      } else {
+        wx.showToast({
+          title: "处理中...",
+          icon: "loading",
+        });
+        wx.uploadFile({
+          url: 'https://colphin.freeneb.com/vpr',
+          filePath: tmp_wav,
+          name: 'file',
+          formData: {
+            name: this.data.name + "_" + this.data.count
+          },
+          success: function (res) {
+            wx.hideToast()
+            console.log(res)
+            if (that.data.count < 3) {
+              wx.showToast({
+                title: "上传成功...",
+                icon: "none",
+                duration: 400
+              });
+              that.setData({
+                hiddenmodal: true,
+                count: that.data.count + 1,
+                n: that.data.n - 1,
+                isVerify: false,
+              });
+              if (that.data.n == 0) {
+                that.setData({
+                  isVerify: true,
+                })
+                wx.setStorageSync('t_name', that.data.name)
+                wx.setStorageSync('t_isverify', true)
+              }
+            } else {
+              var result = JSON.parse(res.data)
+              console.log("result", result)
+              that.setData({
+                hiddenmodal: false,
+                cslt_result: result.CSLT,
+                count: that.data.count + 1,
+                isVerify: true,
+              })
+            }
+          },
+
+          fail: function (res) {
+            wx.hideToast()
+            console.log(res);
+            wx.showToast({
+              title: "录音失败，请重试...",
+              icon: "none",
+              duration: 2000
+            });
+          }
+        });
+      }
     })
   },
 
-  Verify_RecordStart: function () {
-    this.start_record()
-    this.setData({
-      isRecording: true,
-    })
-  },
-  Verify_RecordStop: function () {
-    this.stop_record_verify()
-    this.setData({
-      recorder_img: '../../images/record.png',
-      isRecording: false,
-    })
-  },
 
   //重置
   reload: function () {
@@ -266,14 +187,12 @@ Page({
     this.setData({
       hiddenmodal: true,
       cslt_result: "",
-      speakin_result: "",
     })
   },
   cancelM: function () {
     this.setData({
       hiddenmodal: true,
       cslt_result: "",
-      speakin_result: "",
     })
   }
 })

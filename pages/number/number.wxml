@@ -19,16 +19,15 @@
   </view>
   <view class="body">
     <text>\n\n\n\n</text>
-    <view class="widgets" hidden="{{isVerify}}">
-      <image bindtouchstart="Enroll_RecordStart" bindtouchend="Enroll_RecordStop" class="record" src="{{recorder_img}}"></image>
+    <view class="widgets">
+      <image bindtouchstart="RecordStart" bindtouchend="RecordStop" class="record" src="{{recorder_img}}"></image>
       <text>\n</text>
-      <text class="desc">还需 {{n}} 次</text>
-      <text>\n\n</text>
-    </view>
-    <view class="widgets" hidden="{{!isVerify}}">
-      <image bindtouchstart="Verify_RecordStart" bindtouchend="Verify_RecordStop" class="record" src="{{recorder_img}}"></image>
-      <text>\n</text>
-      <text class="desc">录音验证</text>
+      <view hidden="{{!isVerify}}">
+        <text class="desc">录音验证</text>
+      </view>
+      <view hidden="{{isVerify}}">
+        <text class="desc">还需 {{n}} 次</text>
+      </view>
       <text>\n\n</text>
     </view>
     <view class="N_record">
@@ -39,7 +38,6 @@
     </view>
     <modal hidden="{{hiddenmodal}}" title="识别结果" confirm-text="确定" cancel-text="取消" bindconfirm="confirmM" bindcancel="cancelM">
       <text class="result">\nFreeNeb : {{cslt_result}}\n\n</text>
-      <text class="result">SpeakIn : {{speakin_result}}\n\n</text>
     </modal>
   </view>
 </view>
