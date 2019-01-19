@@ -2,7 +2,7 @@
 <br>
 
 <p align="center">
-<img src="https://github.com/zyzisyz/VPR-wx-client/blob/master/images/cslt.jpg" alt="CSLT">
+<img src="https://github.com/zyzisyz/VPR-wx-client/blob/master/images/freeneb.png" alt="CSLT">
 </p>
 <p align="center">
 <img src="https://img.shields.io/badge/powered%20by-CSLT-green.svg?style=flat-square">
@@ -12,10 +12,7 @@
 
 ## Brief Introduction
 
-星云听 is a WeChat min-program for **speaker verification** based on three VPR models, including: [FreeNeb](www.freeneb.com/
-), [SpeakIn](http://www.speakin.mobi/pages/index.html) and [Microsoft](https://azure.microsoft.com/en-us/services/cognitive-services/speaker-recognition/). Besides, it provides two content options, including **digital-strings** and **short-text**.
-
-Note: The Microsoft API is not stable so we didn't put it in the current version.
+星云听 is a WeChat min-program for **speaker verification** based on [FreeNeb](www.freeneb.com/) VPR models, it provides two content options, including **digital-strings** and **short-text**.
 
 ## Code Structure Overview
 
@@ -44,6 +41,7 @@ I will build and open our API (freeneb) for speaker recognition soon.
 2. **dev** is developing branch.
 3. **v1** contains the original source code for speaker identification.
 4. **v2** contains the original source code for speaker verification.
+5. **v3** contains the source code for speaker verification, based on three vpr model (FreeNeb, Speakin and Microsoft).
 
 ## QR code
 

@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.2.0",
 	"appid": "wx01ed9c0a840f28c2",
-	"projectname": "wx-client2",
+	"projectname": "wx-client",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
