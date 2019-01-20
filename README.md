@@ -51,6 +51,10 @@ Scan this QR code in Wecaht to use this app.
 <img src="https://github.com/zyzisyz/VPR-wx-client/blob/dev/images/QR-code.jpg" alt="QR-code">
 </p>
 
+# Update Log
+
+[2019-01-20 update]: In this weekend, I removed speakin's API and refactored my code. And I remodified nginx configuration: the wav data can be found in wolf server. Here is the server network topology diagram:
+
 ## Contact
 
 zyz (zyziszy@foxmail.com)
