@@ -53,7 +53,37 @@ Scan this QR code in Wecaht to use this app.
 
 # Update Log
 
-[2019-01-20 update]: In this weekend, I removed speakin's API and refactored my code. And I remodified nginx configuration: the wav data can be found in wolf server. Here is the server network topology diagram:
+[2019-01-20 update]: In this weekend, I removed speakin's API and refactored fnvpr-server code. And I remodified nginx configuration: the wav data can be found in wolf server now. Here is the network topology diagram.
+
+wav data structure:
+
+```bash
+.
+|-- numbers
+|   |-- 1546316140
+|   |   |-- 0.wav
+|   |   |-- 1.wav
+|   |   |-- 2.wav
+
+    ...
+    
+|   |   |-- enroll.wav
+
+...
+
+shorttext
+    |-- 1546316673
+    |   |-- 0.wav
+    |   |-- 1.wav
+    |   |-- 2.wav
+    
+    ...
+    
+    |   |-- enroll.wav
+
+....
+
+```
 
 ## Contact
 
