@@ -77,7 +77,7 @@
 .N_record {
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: gainsboro;
+    background-color: #fbf9fe;
     overflow: hidden;
     border-radius: 2px;
     cursor: pointer;

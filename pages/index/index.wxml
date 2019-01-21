@@ -1,11 +1,13 @@
 <view class="index">
   <view class="head">
-    <view class="title">星 云 听</view>
+    <view class="title">
+      <text>星 云 听</text>
+    </view>
     <text>\n</text>
     <view class="desc">
       <text>一款听音识人的微信小程序</text>
     </view>
-    <text>\n</text>
+    <text></text>
     <view class="line"></view>
   </view>
   <view class="body">

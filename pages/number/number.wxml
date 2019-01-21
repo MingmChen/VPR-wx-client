@@ -18,7 +18,7 @@
     <text>{{numbers}}</text>
   </view>
   <view class="body">
-    <text>\n\n\n\n</text>
+    <text>\n\n\n</text>
     <view class="widgets">
       <image bindtouchstart="RecordStart" bindtouchend="RecordStop" class="record" src="{{recorder_img}}"></image>
       <text>\n</text>
@@ -28,7 +28,7 @@
       <view hidden="{{isVerify}}">
         <text class="desc">还需 {{n}} 次</text>
       </view>
-      <text>\n\n</text>
+      <text>\n</text>
     </view>
     <view class="N_record">
       <view id="form" class="widgets__info" bindtap="reload">
@@ -36,8 +36,14 @@
         <image class="widgets__info-img" src="../../images/trash.png" background-size="cover" />
       </view>
     </view>
+    <view class="N_record">
+      <view id="form" class="widgets__info" bindtap="threshold">
+        <text class="widgets__info-name">修改判决阈值</text>
+        <image class="widgets__info-img" src="../../images/interact.png" background-size="cover" />
+      </view>
+    </view>
     <modal hidden="{{hiddenmodal}}" title="识别结果" confirm-text="确定" cancel-text="取消" bindconfirm="confirmM" bindcancel="cancelM">
-      <text class="result">\nFreeNeb : {{cslt_result}}\n\n</text>
+      <text class="result">{{freeneb_result}}\n\n</text>
     </modal>
   </view>
 </view>

@@ -3,6 +3,8 @@ const innerAudioContext = wx.createInnerAudioContext()
 var s = this
 
 Page({
+
+
   data: {
     count: 0,
     name: "",
@@ -11,7 +13,8 @@ Page({
     wav_file_path: "",
     numbers: "2341 7890",
     hiddenmodal: true,
-    cslt_result: "",
+    score: -9999,
+    threshold: 0,
     recorder_img: '../../images/record.png',
     n: 3,
   },
@@ -131,23 +134,35 @@ Page({
           filePath: tmp_wav,
           name: 'file',
           formData: {
-            name: this.data.name + "_" + this.data.count
+            name: 'n' + this.data.name + "_" + this.data.count
           },
           success: function (res) {
             wx.hideToast()
             console.log(res)
+            var result = JSON.parse(res.data)
+            console.log("result: ", result)
+
             if (that.data.count < 3) {
-              wx.showToast({
-                title: "上传成功...",
-                icon: "none",
-                duration: 400
-              });
-              that.setData({
-                hiddenmodal: true,
-                count: that.data.count + 1,
-                n: that.data.n - 1,
-                isVerify: false,
-              });
+
+              if (result.silence == true) {
+                wx.showToast({
+                  title: "没有听到你的声音...",
+                  icon: "fail",
+                  duration: 600
+                });
+              } else {
+                wx.showToast({
+                  title: "上传成功...",
+                  icon: "none",
+                  duration: 400
+                });
+                that.setData({
+                  hiddenmodal: true,
+                  count: that.data.count + 1,
+                  n: that.data.n - 1,
+                  isVerify: false,
+                });
+              }
               if (that.data.n == 0) {
                 that.setData({
                   isVerify: true,
@@ -156,14 +171,19 @@ Page({
                 wx.setStorageSync('n_isverify', true)
               }
             } else {
-              var result = JSON.parse(res.data)
-              console.log("result", result)
-              that.setData({
-                hiddenmodal: false,
-                cslt_result: result.CSLT,
-                count: that.data.count + 1,
-                isVerify: true,
-              })
+              if (result.score > that.data.threshold) {
+                that.setData({
+                  hiddenmodal: false,
+                  freeneb_result: "认证通过 (RT: " + result.RT + ")\n 阈值: " + that.data.threshold + " 分数: " + result.score,
+                  count: that.data.count + 1,
+                })
+              } else {
+                that.setData({
+                  hiddenmodal: false,
+                  freeneb_result: "拒绝 (RT: " + result.RT + ")\n 阈值: " + that.data.threshold + " 分数: " + result.score,
+                  count: that.data.count + 1,
+                })
+              }
             }
           },
 
@@ -201,14 +221,33 @@ Page({
   confirmM: function () {
     this.setData({
       hiddenmodal: true,
-      cslt_result: "",
+      freeneb_result: "",
 
     })
   },
   cancelM: function () {
     this.setData({
       hiddenmodal: true,
-      cslt_result: "",
+      freeneb_result: "",
     })
+  },
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(ops.target)
+    }
+    return {
+      title: '星云听',
+      path: 'pages/index/index',
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
   }
+
 })
