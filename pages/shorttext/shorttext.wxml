@@ -40,10 +40,12 @@
       </view>
     </view>
     <view class="N_record">
-      <view id="form" class="widgets__info" bindtap="threshold">
-        <text class="widgets__info-name">修改判决阈值</text>
-        <image class="widgets__info-img" src="../../images/interact.png" background-size="cover" />
-      </view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view id="form" class="widgets__info">
+          <text class="widgets__info-name">修改判决阈值 {{threshold}}</text>
+          <image class="widgets__info-img" src="../../images/interact.png" background-size="cover" />
+        </view>
+      </picker>
     </view>
     <modal hidden="{{hiddenmodal}}" title="识别结果" confirm-text="确定" cancel-text="取消" bindconfirm="confirmM" bindcancel="cancelM">
       <text class="result">\n{{freeneb_result}}\n\n</text>

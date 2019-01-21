@@ -17,6 +17,9 @@ Page({
     threshold: 0,
     recorder_img: '../../images/record.png',
     n: 3,
+
+    array: [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    index: 10,
   },
 
   onShow: function () {
@@ -248,6 +251,12 @@ Page({
         console.log("转发失败:" + JSON.stringify(res));
       }
     }
-  }
-
+  },
+  bindPickerChange: function (e) {
+    this.setData({
+      index: e.detail.value,
+      threshold: this.data.array[e.detail.value]
+    })
+    console.log('picker发送选择改变，threshold值为', this.data.threshold)
+  },
 })

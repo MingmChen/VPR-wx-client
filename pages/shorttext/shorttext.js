@@ -27,13 +27,14 @@ Page({
     recorder_img: '../../images/record.png',
     n: 3,
     text: "独上高楼，望尽天涯路",
+    array: [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    index: 10,
   },
 
   onShow: function () {
     this.setData({
       name: wx.getStorageSync('t_name'),//若无储存则为空
       isVerify: wx.getStorageSync('t_isverify'),
-      threshold: wx.getStorageSync('t_threshold')
     })
   },
 
@@ -156,17 +157,24 @@ Page({
               }
             } else {
               if (result.score > that.data.threshold) {
-                that.setData({
-                  hiddenmodal: false,
-                  freeneb_result: "认证通过 (RT: " + result.RT + ")\n 阈值: " + that.data.threshold + " 分数: " + result.score,
-                  count: that.data.count + 1,
-                })
+                wx.showToast({
+                  title: "认证通过 (RT:" + that.data.RT + "ms)",
+                  icon: "success",
+                  duration: 1200
+                });
               } else {
+                wx.showToast({
+                  title: "认证失败 (RT:" + that.data.RT + "ms)",
+                  icon: "fail",
+                  duration: 1200
+                });
+                /*
                 that.setData({
                   hiddenmodal: false,
                   freeneb_result: "拒绝 (RT: " + result.RT + ")\n 阈值: " + that.data.threshold + " 分数: " + result.score,
                   count: that.data.count + 1,
                 })
+                */
               }
             }
           },
@@ -231,5 +239,12 @@ Page({
         console.log("转发失败:" + JSON.stringify(res));
       }
     }
-  }
+  },
+  bindPickerChange: function (e) {
+    this.setData({
+      index: e.detail.value,
+      threshold: this.data.array[e.detail.value]
+    })
+    console.log('picker发送选择改变，threshold值为', this.data.threshold)
+  },
 })

@@ -53,21 +53,29 @@ Scan this QR code in Wecaht to use this app.
 
 # Update Log
 
-[2019-01-20 update]: In this weekend, I removed speakin's API and refactored fnvpr-server code. And I remodified nginx configuration: the wav data can be found in wolf server now. Here is the network topology diagram.
+[2019-01-20 update]: In this week,
 
-wav data structure:
+1. I remodified nginx configuration and changed the server networking structure, Here is the network topology diagram:
 
-```bash
+<p align="center">
+<img src="https://github.com/zyzisyz/VPR-wx-client/blob/dev/images/network.jpg" alt="QR-code">
+</p>
+
+The wav data can be found in our local servers now (datapath: ). Each user will upload at least 4 voice files to achieve speaker verification.
+Here is voice file structure:
+
+```
 .
 |-- numbers
-|   |-- 1546316140
-|   |   |-- 0.wav
+|   |-- 1546316140          //timestamp: Distinguish different users
+|   |   |-- 0.wav           //0.wav--2.wav: for enrollment
 |   |   |-- 1.wav
 |   |   |-- 2.wav
+|   |   |-- 3.wav           //3.wav and others: for verification
 
     ...
     
-|   |   |-- enroll.wav
+|   |   |-- enroll.wav      //0.wav--2.wav
 
 ...
 
