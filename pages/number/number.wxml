@@ -18,7 +18,7 @@
     <text>{{numbers}}</text>
   </view>
   <view class="body">
-    <text>\n\n\n</text>
+    <text>\n\n</text>
     <view class="widgets">
       <image bindtouchstart="RecordStart" bindtouchend="RecordStop" class="record" src="{{recorder_img}}"></image>
       <text>\n</text>
